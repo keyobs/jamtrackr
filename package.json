@@ -30,6 +30,7 @@
         "@typescript-eslint/eslint-plugin": "^6.19.1",
         "dayjs": "^1.11.10",
         "expo": "~50.0.2",
+        "expo-localization": "~14.8.3",
         "expo-status-bar": "~1.11.1",
         "i18next": "^23.7.19",
         "react": "18.2.0",
