@@ -72,7 +72,7 @@ const TabsNavigator = () => {
             {tabs.map((tab) => (
                 <Tab.Screen
                     key={tab.name}
-                    name={tab.name}
+                    name={tab.name as keyof AppStackParamsList}
                     component={tab.component}
                     options={{
                         tabBarLabel: t(tab.label),
