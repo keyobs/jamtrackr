@@ -14,5 +14,10 @@ const GamesScreen = () => {
 export default GamesScreen;
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });

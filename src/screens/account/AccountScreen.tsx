@@ -1,7 +1,7 @@
 import { Text, StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 
-const AccountSreen = () => {
+const AccountScreen = () => {
     const { t } = useTranslation();
 
     return (
@@ -11,8 +11,13 @@ const AccountSreen = () => {
     );
 };
 
-export default AccountSreen;
+export default AccountScreen;
 
 const styles = StyleSheet.create({
-    container: {},
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
 });
