@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react';
 import { useTranslation } from 'react-i18next';
-import { createMaterialBottomTabNavigator } from 'react-native-paper/react-navigation';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
@@ -18,7 +18,7 @@ export type AppStackParamsList = {
   Account: undefined;
 };
 
-const Tab = createMaterialBottomTabNavigator<AppStackParamsList>();
+const Tab = createBottomTabNavigator<AppStackParamsList>();
 
 type TTab = {
   name: string;
@@ -64,11 +64,7 @@ const TabsNavigator = () => {
     const { t } = useTranslation();
 
     return (
-        <Tab.Navigator
-            initialRouteName="Dashboard"
-            activeColor="#FF13CB"
-            inactiveColor="#15132D"
-        >
+        <Tab.Navigator initialRouteName="Dashboard">
             {tabs.map((tab) => (
                 <Tab.Screen
                     key={tab.name}
