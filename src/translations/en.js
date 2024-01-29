@@ -7,6 +7,10 @@ export default {
 
     // LEAGUE SCREEN
     league_title: "League",
+    league_teams_title: "Teams",
+    league_teams_add_button_label: "add a team",
+    league_players_title: "Players",
+    league_players_manage_button_label: "manage players",
 
     // SEARCH SCREEN
     search_title: "Search",
