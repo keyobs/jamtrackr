@@ -25,7 +25,8 @@ module.exports = function(api) {
                         store: './src/store',
                         templates: './src/templates',
                     },
-                }
+                },
+                'react-native-reanimated/plugin' // keep in the last position
             ],
         ],
 

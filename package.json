@@ -24,10 +24,11 @@
     },
     "dependencies": {
         "@react-native-async-storage/async-storage": "1.21.0",
-        "@react-native-material/core": "^1.3.7",
         "@react-navigation/bottom-tabs": "^6.5.11",
         "@react-navigation/native": "^6.1.9",
         "@react-navigation/native-stack": "^6.9.17",
+        "@rneui/base": "^4.0.0-rc.8",
+        "@rneui/themed": "^4.0.0-rc.8",
         "@typescript-eslint/eslint-plugin": "^6.19.1",
         "dayjs": "^1.11.10",
         "expo": "^50.0.4",
