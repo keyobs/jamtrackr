@@ -3,6 +3,9 @@ import { useTranslation } from 'react-i18next';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { View, StyleSheet } from 'react-native';
+
+import { themeColors } from 'src/theme/colors';
 
 import AccountScreen from '@screens/account/AccountScreen';
 import DashboardScreen from '@screens/dashboard/DashboardScreen';
@@ -79,6 +82,8 @@ const TabsNavigator = () => {
                                 size={24}
                             />
                         ),
+                        headerBackground: () => <View style={styles.background} />,
+                        headerTintColor: themeColors.ivory,
                     }}
                 />
             ))}
@@ -87,3 +92,10 @@ const TabsNavigator = () => {
 };
 
 export default TabsNavigator;
+
+const styles = StyleSheet.create({
+    background: {
+        flex: 1,
+        backgroundColor: themeColors.darkBlue,
+    },
+});
