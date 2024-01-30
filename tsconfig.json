@@ -13,7 +13,9 @@
       "services/*": ["./src/services/*"],
       "@store/*": ["./src/store/*"],
       "templates": ["./src/templates"],
+      "theme": ["./src/theme"],
     }
   },
+  
   "extends": "expo/tsconfig.base"
 }

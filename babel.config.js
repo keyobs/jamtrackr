@@ -14,7 +14,7 @@ module.exports = function(api) {
                 'module-resolver',
                 {
                     alias: {
-                        assets: './src/assets',
+                        assets: './assets',
                         components: './src/components',
                         constants: './src/constants',
                         hooks: './src/hooks',
@@ -24,6 +24,7 @@ module.exports = function(api) {
                         services: './src/services',
                         store: './src/store',
                         templates: './src/templates',
+                        theme: './src/theme',
                     },
                 },
                 'react-native-reanimated/plugin' // keep in the last position
