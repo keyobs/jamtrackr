@@ -10,6 +10,8 @@ import { useTranslation } from 'react-i18next';
 
 import { Button } from '@rneui/themed';
 
+import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
+
 const LeagueScreen = () => {
     const { t } = useTranslation();
 
@@ -36,6 +38,11 @@ const LeagueScreen = () => {
                     <Text>{t('league_players_manage_button_label')}</Text>
                 </Button>
             </View>
+            <WideButtonWithIcon
+                label={t('league_players_manage_button_label')}
+                preset="chevron-next"
+                onPressAction={() => console.log('manage players')}
+            />
         </View>
     );
 };
@@ -60,6 +67,7 @@ const styles: Record<
     },
 
     sectionTitleText: {
+        color: '#fff',
         fontSize: 15,
         fontWeight: 'bold',
     },
