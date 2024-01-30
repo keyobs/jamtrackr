@@ -9,6 +9,7 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native';
+import { themeColors } from 'src/theme/colors';
 
 type TWideButtonWithIcon = {
   label: string;
@@ -41,7 +42,7 @@ export const WideButtonWithIcon = (props: TWideButtonWithIcon) => {
         <TouchableHighlight
             style={styles.container}
             activeOpacity={0.8}
-            underlayColor="#3593b7"
+            underlayColor={themeColors.teal}
             onPress={() => onPressAction()}
         >
             <View style={styles.buttonContainer}>
@@ -49,7 +50,7 @@ export const WideButtonWithIcon = (props: TWideButtonWithIcon) => {
                 {preset && (
                     <MaterialCommunityIcons
                         name={iconPreset[preset].name}
-                        color="#FFFFF0"
+                        color={themeColors.darkBlue}
                         size={28}
                     />
                 )}
@@ -68,17 +69,17 @@ const styles: Record<
         marginVertical: 10,
         paddingHorizontal: 20,
         justifyContent: 'center',
-        backgroundColor: '#0378A6',
+        backgroundColor: themeColors.lightSeaGreen,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     text: {
-        color: '#FFFFF0',
-        fontSize: 16,
+        color: themeColors.hardDarkBlue,
+        fontSize: 15,
     },
     icon: {
-        color: '#FFFFF0',
+        color: themeColors.darkBlue,
     },
 });
