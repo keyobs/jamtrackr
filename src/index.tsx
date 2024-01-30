@@ -1,13 +1,12 @@
 import { StyleSheet } from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 import './translations/configI18n';
 
-import { StatusBar } from 'expo-status-bar';
-
-import RootNavigator from '@navigation/Navigation';
-import { themeColors } from './theme/colors';
+import Navigation from '@navigation/Navigation';
+import { themeColors } from '@theme/colors';
 
 export default function App() {
     return (
@@ -18,7 +17,7 @@ export default function App() {
                     backgroundColor={themeColors.ivory}
                     style="dark"
                 />
-                <RootNavigator />
+                <Navigation />
             </SafeAreaProvider>
         </GestureHandlerRootView>
     );

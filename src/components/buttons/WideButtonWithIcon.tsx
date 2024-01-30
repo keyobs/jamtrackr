@@ -9,7 +9,7 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native';
-import { themeColors } from 'src/theme/colors';
+import { themeColors } from '@theme/colors';
 
 type TWideButtonWithIcon = {
   label: string;

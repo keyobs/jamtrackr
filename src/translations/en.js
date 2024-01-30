@@ -6,6 +6,7 @@ export default {
     games_title: "Games",
 
     // LEAGUE SCREEN
+    league_header_title: "League",
     league_title: "League",
     league_teams_title: "Teams",
     league_teams_add_button_label: "add a team",

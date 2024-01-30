@@ -5,32 +5,25 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { View, StyleSheet } from 'react-native';
 
-import { themeColors } from 'src/theme/colors';
+import { themeColors } from '@theme/colors';
+import { TAppStackParamsList } from './Navigation';
 
 import AccountScreen from '@screens/account/AccountScreen';
 import DashboardScreen from '@screens/dashboard/DashboardScreen';
 import GamesScreen from '@screens/games/GamesScreen';
-import LeagueScreen from '@screens/league/LeagueScreen';
 import SearchScreen from '@screens/search/SearchScreen';
+import LeagueRouter from '@screens/league/LeagueRouter';
 
-export type AppStackParamsList = {
-  Dashboard: undefined;
-  Games: undefined;
-  League: undefined;
-  Search: undefined; // {query: string}
-  Account: undefined;
-};
+const BottomTabs = createBottomTabNavigator<TAppStackParamsList>();
 
-const Tab = createBottomTabNavigator<AppStackParamsList>();
-
-type TTab = {
+type TBottomTab = {
   name: string;
   label: string;
-  component: ComponentProps<typeof Tab.Screen>['component'];
+  component: ComponentProps<typeof BottomTabs.Screen>['component'];
   materialIcon: ComponentProps<typeof MaterialCommunityIcons>['name'];
 }[];
 
-const tabs: TTab = [
+const bottomTabs: TBottomTab = [
     {
         name: 'Dashboard',
         label: 'home',
@@ -44,9 +37,9 @@ const tabs: TTab = [
         materialIcon: 'apps',
     },
     {
-        name: 'League',
-        label: 'league_title',
-        component: LeagueScreen,
+        name: 'League_Router',
+        label: 'league_header_title',
+        component: LeagueRouter,
         materialIcon: 'creation',
     },
     {
@@ -63,15 +56,18 @@ const tabs: TTab = [
     },
 ];
 
-const TabsNavigator = () => {
+const BottomTabsNavigator = () => {
     const { t } = useTranslation();
 
     return (
-        <Tab.Navigator initialRouteName="Dashboard">
-            {tabs.map((tab) => (
-                <Tab.Screen
+        <BottomTabs.Navigator
+            initialRouteName="Dashboard"
+            screenOptions={{ headerShown: false }}
+        >
+            {bottomTabs.map((tab) => (
+                <BottomTabs.Screen
                     key={tab.name}
-                    name={tab.name as keyof AppStackParamsList}
+                    name={tab.name as keyof TAppStackParamsList}
                     component={tab.component}
                     options={{
                         tabBarLabel: t(tab.label),
@@ -87,11 +83,11 @@ const TabsNavigator = () => {
                     }}
                 />
             ))}
-        </Tab.Navigator>
+        </BottomTabs.Navigator>
     );
 };
 
-export default TabsNavigator;
+export default BottomTabsNavigator;
 
 const styles = StyleSheet.create({
     background: {

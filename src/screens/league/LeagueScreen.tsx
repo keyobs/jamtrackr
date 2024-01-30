@@ -7,13 +7,17 @@ import {
     TextStyle,
 } from 'react-native';
 import { useTranslation } from 'react-i18next';
+import { useNavigation } from '@react-navigation/native';
 
-import { Button } from '@rneui/themed';
+import { themeColors } from '@theme/colors';
+import { TAppStackParamsList } from '@navigation/Navigation';
+import { appRoutes } from '@navigation/appRoutes';
 
 import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
 
 const LeagueScreen = () => {
     const { t } = useTranslation();
+    const navigation = useNavigation<TAppStackParamsList>();
 
     return (
         <View style={styles.container}>
@@ -22,9 +26,11 @@ const LeagueScreen = () => {
                     <Text style={styles.sectionTitleText}>{t('league_teams_title')}</Text>
                 </View>
 
-                <Button onPress={() => console.log('pressed')} style={styles.pressable}>
-                    <Text>{t('league_teams_add_button_label')}</Text>
-                </Button>
+                <WideButtonWithIcon
+                    label={t('league_teams_add_button_label')}
+                    preset="chevron-next"
+                    onPressAction={() => console.log('manage teams')}
+                />
             </View>
 
             <View style={[styles.section, styles.players]}>
@@ -34,15 +40,12 @@ const LeagueScreen = () => {
                     </Text>
                 </View>
 
-                <Button onPress={() => console.log('pressed')}>
-                    <Text>{t('league_players_manage_button_label')}</Text>
-                </Button>
+                <WideButtonWithIcon
+                    label={t('league_players_manage_button_label')}
+                    preset="chevron-next"
+                    onPressAction={() => navigation.navigate(appRoutes.PLAYERS)}
+                />
             </View>
-            <WideButtonWithIcon
-                label={t('league_players_manage_button_label')}
-                preset="chevron-next"
-                onPressAction={() => console.log('manage players')}
-            />
         </View>
     );
 };
@@ -55,6 +58,7 @@ const styles: Record<
 > = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: themeColors.darkBlue,
     },
 
     section: {
@@ -64,6 +68,7 @@ const styles: Record<
     sectionTitle: {
         height: 50,
         justifyContent: 'center',
+        paddingHorizontal: 20,
     },
 
     sectionTitleText: {

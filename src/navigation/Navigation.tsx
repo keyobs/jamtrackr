@@ -1,13 +1,22 @@
 import { NavigationContainer } from '@react-navigation/native';
+import BottomTabsNavigator from './BottomTabsNavigator';
 
-import TabsNavigator from './TabsNavigator';
+export type TAppStackParamsList = {
+  BottomTabsNavigator: undefined;
+  Dashboard: undefined;
+  Games: undefined;
+  League: undefined;
+  Players: undefined;
+  Search: undefined; // {query: string}
+  Account: undefined;
+};
 
-const RootNavigator = () => {
+const Navigation = () => {
     return (
         <NavigationContainer>
-            <TabsNavigator />
+            <BottomTabsNavigator />
         </NavigationContainer>
     );
 };
 
-export default RootNavigator;
+export default Navigation;
