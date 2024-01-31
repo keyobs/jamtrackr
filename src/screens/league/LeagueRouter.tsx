@@ -7,6 +7,7 @@ import { themeColors } from '@theme/colors';
 import LeagueScreen from './LeagueScreen';
 import PlayersScreen from './players/PlayersScreen';
 import { useTranslation } from 'react-i18next';
+import TeamsScreen from './players/TeamsScreen';
 
 const LeagueStack = createNativeStackNavigator<TAppStackParamsList>();
 
@@ -27,6 +28,13 @@ const LeagueRouter = () => {
             }}
         >
             <LeagueStack.Screen
+                name={appRoutes.LEAGUE}
+                component={LeagueScreen}
+                options={{
+                    title: t('league_header_title'),
+                }}
+            />
+            <LeagueStack.Screen
                 name={appRoutes.PLAYERS}
                 component={PlayersScreen}
                 options={{
@@ -34,10 +42,10 @@ const LeagueRouter = () => {
                 }}
             />
             <LeagueStack.Screen
-                name={appRoutes.LEAGUE}
-                component={LeagueScreen}
+                name={appRoutes.TEAMS}
+                component={TeamsScreen}
                 options={{
-                    title: t('league_header_title'),
+                    title: t('league_teams_title'),
                 }}
             />
         </LeagueStack.Navigator>

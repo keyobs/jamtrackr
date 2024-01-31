@@ -22,6 +22,14 @@ export default {
     players_form_teams_label: "Equipes",
     players_add_button_label: "Ajouter",
 
+    // TEAMS
+    teams_title: "Equipes",
+    teams_no_teams_disclaimer: "en attendant vos équipes...",
+    teams_form_title: "Nouvelle équipe",
+    teams_form_name_label: "Nom",
+    teams_form_name_placeholder: "entrer un nom d'équipe",
+    teams_form_submit_button_label: "Créer",
+
     // SEARCH SCREEN
     search_title: "Recherche",
 

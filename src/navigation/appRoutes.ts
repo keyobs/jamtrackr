@@ -5,6 +5,7 @@ export enum appRoutes {
 
   LEAGUE = 'League',
   PLAYERS = 'Players',
+  TEAMS = 'Teams',
 
   SEARCH = 'Search',
 

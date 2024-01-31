@@ -29,7 +29,7 @@ const LeagueScreen = () => {
                 <WideButtonWithIcon
                     label={t('league_teams_add_button_label')}
                     preset="chevron-next"
-                    onPressAction={() => console.log('manage teams')}
+                    onPressAction={() => navigation.navigate(appRoutes.TEAMS)}
                 />
             </View>
 
