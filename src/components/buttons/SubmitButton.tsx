@@ -1,4 +1,5 @@
 import { Button, ButtonProps } from '@rneui/base';
+import { themeColors } from '@theme/colors';
 
 type TSubmitButton = ButtonProps & {
   title: string;
@@ -14,7 +15,7 @@ const SubmitButton = (props: TSubmitButton) => {
             onPress={onPress}
             buttonStyle={{
                 width: '80%',
-                backgroundColor: '#E846E1',
+                backgroundColor: themeColors.pink,
                 borderRadius: 5,
                 minHeight: 50,
             }}

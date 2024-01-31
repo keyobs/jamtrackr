@@ -9,8 +9,8 @@ export const themeColors: Record<string, `#${string}`> = {
     //blues
     hardDarkBlue: '#00131a',
     darkBlue: '#024059',
-    steelblue: '#0378A6',
-    lightblue: '#9AC9DB',
+    steelBlue: '#0378A6',
+    lightBlue: '#9AC9DB',
 
     //greens
     turquoise: '#05F2DB',
@@ -18,4 +18,7 @@ export const themeColors: Record<string, `#${string}`> = {
     teal: '#008080',
     lightSeaGreen: '#20B2AA',
     lightGreen: '#05F2DB',
+
+    //pinks
+    pink: '#E846E1',
 };
