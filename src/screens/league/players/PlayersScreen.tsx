@@ -81,26 +81,30 @@ const PlayersScreen = () => {
                         }
                     />
 
-                    <Text style={styles.label}>Roles</Text>
-                    <ButtonGroup
-                        buttons={roleOptions}
-                        selectMultiple
-                        selectedIndexes={playerForm.roles.map((role) =>
-                            roleOptions.indexOf(role),
-                        )}
-                        onPress={(value) => handleSelectRoles(value)}
-                        buttonContainerStyle={{
-                            backgroundColor: themeColors.ivory,
-                        }}
-                        textStyle={{
-                            color: '#00131a',
-                        }}
-                        selectedButtonStyle={{
-                            backgroundColor: '#20B2AA',
-                        }}
-                    />
+                    <View style={{ marginBottom: 20 }}>
+                        <Text style={styles.label}>Roles</Text>
+                        <ButtonGroup
+                            buttons={roleOptions}
+                            selectMultiple
+                            selectedIndexes={playerForm.roles.map((role) =>
+                                roleOptions.indexOf(role),
+                            )}
+                            onPress={(value) => handleSelectRoles(value)}
+                            buttonContainerStyle={{
+                                backgroundColor: themeColors.ivory,
+                            }}
+                            textStyle={{
+                                color: '#00131a',
+                            }}
+                            selectedButtonStyle={{
+                                backgroundColor: '#20B2AA',
+                            }}
+                        />
+                    </View>
 
-                    <Text>team</Text>
+                    <View>
+                        <Text style={styles.label}>Team</Text>
+                    </View>
                 </View>
             </View>
         </KeyboardAwareScrollView>
@@ -117,6 +121,7 @@ const styles: Record<
         flex: 1,
         backgroundColor: themeColors.darkBlue,
         paddingTop: 10,
+        paddingBottom: 50,
     },
     section: {
         minHeight: 200,
