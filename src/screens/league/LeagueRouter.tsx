@@ -27,17 +27,17 @@ const LeagueRouter = () => {
             }}
         >
             <LeagueStack.Screen
-                name={appRoutes.LEAGUE}
-                component={LeagueScreen}
-                options={{
-                    title: t('league_header_title'),
-                }}
-            />
-            <LeagueStack.Screen
                 name={appRoutes.PLAYERS}
                 component={PlayersScreen}
                 options={{
                     title: t('league_players_title'),
+                }}
+            />
+            <LeagueStack.Screen
+                name={appRoutes.LEAGUE}
+                component={LeagueScreen}
+                options={{
+                    title: t('league_header_title'),
                 }}
             />
         </LeagueStack.Navigator>
