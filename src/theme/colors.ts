@@ -1,4 +1,4 @@
-export const themeColors = {
+export const themeColors: Record<string, `#${string}`> = {
     //blacks
     black: '#022601',
 
