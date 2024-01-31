@@ -13,6 +13,15 @@ export default {
     league_players_title: "Players",
     league_players_manage_button_label: "gérer",
 
+    //PLAYERS
+    players_title: "Players",
+    players_form_title: "Ajouter un.e joueureuse",
+    players_form_name_label: "Nom",
+    players_form_number_label: "Numéro",
+    players_form_role_label: "Role",
+    players_form_teams_label: "Equipes",
+    players_add_button_label: "Ajouter",
+
     // SEARCH SCREEN
     search_title: "Recherche",
 

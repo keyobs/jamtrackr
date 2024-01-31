@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import {
     Text,
@@ -28,6 +29,8 @@ type TPlayer = {
 export type TRole = 'blocker' | 'jammer' | 'pivot';
 
 export const CreatePlayerForm = () => {
+    const { t } = useTranslation();
+
     const refs = {
         nameRef: useRef(null),
         numberRef: useRef(null),
@@ -52,17 +55,17 @@ export const CreatePlayerForm = () => {
 
     return (
         <View style={styles.form}>
-            <Text style={styles.formTitle}>Create a new player</Text>
+            <Text style={styles.formTitle}>{t('players_form_title')}</Text>
 
             <InputLight
                 forwardedRef={refs.nameRef}
-                label="Name"
+                label={t('players_form_name_label')}
                 value={playerForm.name}
                 onChangeText={(value) => setPlayerForm({ ...playerForm, name: value })}
             />
             <InputLight
                 forwardedRef={refs.numberRef}
-                label="Number"
+                label={t('players_form_number_label')}
                 value={playerForm.number}
                 onChangeText={(value) =>
                     setPlayerForm({ ...playerForm, number: value })
@@ -70,7 +73,7 @@ export const CreatePlayerForm = () => {
             />
 
             <View style={{ marginBottom: 20 }}>
-                <Text style={styles.label}>Roles</Text>
+                <Text style={styles.label}>{t('players_form_role_label')}</Text>
                 <ButtonGroup
                     buttons={roleOptions}
                     selectMultiple
@@ -91,7 +94,7 @@ export const CreatePlayerForm = () => {
             </View>
 
             <View style={{ marginBottom: 25 }}>
-                <Text style={styles.label}>Teams</Text>
+                <Text style={styles.label}>{t('players_form_teams_label')}</Text>
                 <Button
                     onPress={() => alert('add a team')}
                     containerStyle={{
@@ -116,7 +119,10 @@ export const CreatePlayerForm = () => {
                 />
             </View>
 
-            <SubmitButton title="Add player" onPress={() => alert('player added')} />
+            <SubmitButton
+                title={t('players_add_button_label')}
+                onPress={() => alert('player added')}
+            />
         </View>
     );
 };
