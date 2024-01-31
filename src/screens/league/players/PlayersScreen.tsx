@@ -1,3 +1,6 @@
+import { useRef, useState } from 'react';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
+
 import {
     Text,
     StyleSheet,
@@ -6,16 +9,20 @@ import {
     TextStyle,
     ViewStyle,
 } from 'react-native';
+
 import { themeColors } from '@theme/colors';
-import { useRef, useState } from 'react';
-import { InputLight } from '@components/inputs/InputLigth';
+
+import { ButtonGroup } from '@rneui/themed';
+import { InputLight } from '@components/inputs/InputLight';
 
 type TPlayer = {
   name: string;
   number: string;
-  role: 'blocker' | 'jammer' | 'pivot';
+  roles: TRole[];
   team: string;
 };
+
+type TRole = 'blocker' | 'jammer' | 'pivot';
 
 const PlayersScreen = () => {
     const refs = {
@@ -28,44 +35,74 @@ const PlayersScreen = () => {
     const [playerForm, setPlayerForm] = useState<TPlayer>({
         name: '',
         number: '',
-        role: null,
+        roles: [],
         team: '',
     });
 
-    console.log(playerForm);
+    const roleOptions: TRole[] = ['blocker', 'jammer', 'pivot'];
+
+    const handleSelectRoles = (value: number[]) => {
+        const roles = value.map((index) => roleOptions[index]);
+        setPlayerForm({ ...playerForm, roles: roles });
+    };
+
+    console.log('form', playerForm);
 
     return (
-        <View style={styles.container}>
-            <View style={[styles.section, styles.playersList]}>
-                <Text style={styles.listTitle}>Liste</Text>
-                <Text>number name team</Text>
-                <Text></Text>
+        <KeyboardAwareScrollView
+            keyboardShouldPersistTaps="always"
+            style={styles.container}
+            getTextInoutRefs={() => refs.nameRef}
+        >
+            <View style={styles.container}>
+                <View style={[styles.section, styles.playersList]}>
+                    <Text style={styles.listTitle}>Liste</Text>
+                    <Text>number name team</Text>
+                    <Text></Text>
+                </View>
+
+                <View style={styles.section}>
+                    <Text>Create a new player</Text>
+                    <InputLight
+                        forwardedRef={refs.nameRef}
+                        label="Name"
+                        value={playerForm.name}
+                        onChangeText={(value) =>
+                            setPlayerForm({ ...playerForm, name: value })
+                        }
+                    />
+
+                    <InputLight
+                        forwardedRef={refs.numberRef}
+                        label="Number"
+                        value={playerForm.number}
+                        onChangeText={(value) =>
+                            setPlayerForm({ ...playerForm, number: value })
+                        }
+                    />
+
+                    <ButtonGroup
+                        buttons={roleOptions}
+                        selectMultiple
+                        selectedIndexes={playerForm.roles.map((role) =>
+                            roleOptions.indexOf(role),
+                        )}
+                        onPress={(value) => handleSelectRoles(value)}
+                        buttonContainerStyle={{
+                            backgroundColor: themeColors.ivory,
+                        }}
+                        textStyle={{
+                            color: '#00131a',
+                        }}
+                        selectedButtonStyle={{
+                            backgroundColor: '#20B2AA',
+                        }}
+                    />
+
+                    <Text>team</Text>
+                </View>
             </View>
-
-            <View style={styles.section}>
-                <Text>Create a new player</Text>
-
-                <InputLight
-                    forwardedRef={refs.nameRef}
-                    label="Name"
-                    value={playerForm.name}
-                    onChangeText={(value) =>
-                        setPlayerForm({ ...playerForm, name: value })
-                    }
-                />
-
-                <InputLight
-                    forwardedRef={refs.numberRef}
-                    label="Number"
-                    value={playerForm.number}
-                    onChangeText={(value) =>
-                        setPlayerForm({ ...playerForm, number: value })
-                    }
-                />
-                <Text>role</Text>
-                <Text>team</Text>
-            </View>
-        </View>
+        </KeyboardAwareScrollView>
     );
 };
 
@@ -78,10 +115,10 @@ const styles: Record<
     container: {
         flex: 1,
         backgroundColor: themeColors.darkBlue,
-        paddingTop: 15,
+        paddingTop: 10,
     },
     section: {
-        flex: 2,
+        minHeight: 200,
     },
     playersList: {
         borderTopWidth: 1,

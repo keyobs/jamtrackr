@@ -35,7 +35,7 @@ export const InputLight = (props: ILightInput & InputProps) => {
                 borderStyle: 'solid',
                 borderWidth: 2,
                 borderColor: highlightInpputClass,
-                borderRadius: 10,
+                borderRadius: 5,
                 paddingRight: 15,
                 paddingLeft: 10,
                 marginTop: 10,

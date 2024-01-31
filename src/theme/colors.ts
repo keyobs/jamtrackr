@@ -10,7 +10,7 @@ export const themeColors: Record<string, `#${string}`> = {
     hardDarkBlue: '#00131a',
     darkBlue: '#024059',
     steelblue: '#0378A6',
-    lightblue: '#0388A6',
+    lightblue: '#9AC9DB',
 
     //greens
     turquoise: '#05F2DB',
