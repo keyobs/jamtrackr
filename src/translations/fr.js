@@ -7,7 +7,7 @@ export default {
 
     // LEAGUE SCREEN
     league_header_title: "League",
-    league_title: "League",
+    league_tab_title: "League",
     league_teams_title: "Equipes",
     league_teams_add_button_label: "nouvelle équipe",
     league_players_title: "Players",

@@ -38,7 +38,7 @@ const bottomTabs: TBottomTab = [
     },
     {
         name: 'League_Router',
-        label: 'league_header_title',
+        label: 'league_tab_title',
         component: LeagueRouter,
         materialIcon: 'creation',
     },
