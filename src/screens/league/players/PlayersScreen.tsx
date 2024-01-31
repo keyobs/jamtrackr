@@ -13,7 +13,9 @@ import {
 import { themeColors } from '@theme/colors';
 
 import { ButtonGroup } from '@rneui/themed';
+
 import { InputLight } from '@components/inputs/InputLight';
+import SubmitButton from '@components/buttons/SubmitButton';
 
 type TPlayer = {
   name: string;
@@ -102,9 +104,14 @@ const PlayersScreen = () => {
                         />
                     </View>
 
-                    <View>
+                    <View style={{ marginBottom: 20 }}>
                         <Text style={styles.label}>Team</Text>
                     </View>
+
+                    <SubmitButton
+                        title="Add player"
+                        onPress={() => alert('player added')}
+                    />
                 </View>
             </View>
         </KeyboardAwareScrollView>
