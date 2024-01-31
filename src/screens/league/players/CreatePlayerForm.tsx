@@ -57,22 +57,29 @@ export const CreatePlayerForm = () => {
         <View style={styles.form}>
             <Text style={styles.formTitle}>{t('players_form_title')}</Text>
 
-            <InputLight
-                forwardedRef={refs.nameRef}
-                label={t('players_form_name_label')}
-                value={playerForm.name}
-                onChangeText={(value) => setPlayerForm({ ...playerForm, name: value })}
-            />
-            <InputLight
-                forwardedRef={refs.numberRef}
-                label={t('players_form_number_label')}
-                value={playerForm.number}
-                onChangeText={(value) =>
-                    setPlayerForm({ ...playerForm, number: value })
-                }
-            />
+            <View style={styles.infosContainer}>
+                <InputLight
+                    forwardedRef={refs.numberRef}
+                    label={t('players_form_number_label')}
+                    value={playerForm.number}
+                    onChangeText={(value) =>
+                        setPlayerForm({ ...playerForm, number: value })
+                    }
+                    containerStyle={{ width: 100 }}
+                />
 
-            <View style={{ marginBottom: 20 }}>
+                <InputLight
+                    forwardedRef={refs.nameRef}
+                    label={t('players_form_name_label')}
+                    value={playerForm.name}
+                    onChangeText={(value) =>
+                        setPlayerForm({ ...playerForm, name: value })
+                    }
+                    containerStyle={{ width: 300 }}
+                />
+            </View>
+
+            <View style={styles.roleContainer}>
                 <Text style={styles.label}>{t('players_form_role_label')}</Text>
                 <ButtonGroup
                     buttons={roleOptions}
@@ -81,6 +88,9 @@ export const CreatePlayerForm = () => {
                         roleOptions.indexOf(role),
                     )}
                     onPress={handleSelectRoles}
+                    containerStyle={{
+                        height: 50,
+                    }}
                     buttonContainerStyle={{
                         backgroundColor: themeColors.ivory,
                     }}
@@ -93,7 +103,7 @@ export const CreatePlayerForm = () => {
                 />
             </View>
 
-            <View style={{ marginBottom: 25 }}>
+            <View style={styles.teamsContainer}>
                 <Text style={styles.label}>{t('players_form_teams_label')}</Text>
                 <Button
                     onPress={() => alert('add a team')}
@@ -102,8 +112,8 @@ export const CreatePlayerForm = () => {
                         marginVertical: 5,
                     }}
                     buttonStyle={{
-                        width: 40,
-                        height: 40,
+                        width: 50,
+                        height: 50,
                         backgroundColor: themeColors.ivory,
                     }}
                     iconContainerStyle={{
@@ -145,5 +155,15 @@ const styles: Record<
         fontSize: 15,
         paddingHorizontal: 10,
         paddingBottom: 5,
+    },
+    infosContainer: {
+        justifyContent: 'space-between',
+        flexDirection: 'row',
+    },
+    roleContainer: {
+        marginBottom: 20,
+    },
+    teamsContainer: {
+        marginBottom: 25,
     },
 });
