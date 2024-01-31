@@ -7,8 +7,33 @@ import {
     ViewStyle,
 } from 'react-native';
 import { themeColors } from '@theme/colors';
+import { useRef, useState } from 'react';
+import { InputLight } from '@components/inputs/InputLigth';
+
+type TPlayer = {
+  name: string;
+  number: string;
+  role: 'blocker' | 'jammer' | 'pivot';
+  team: string;
+};
 
 const PlayersScreen = () => {
+    const refs = {
+        nameRef: useRef(null),
+        numberRef: useRef(null),
+        roleRef: useRef(null),
+        teamRef: useRef(null),
+    };
+
+    const [playerForm, setPlayerForm] = useState<TPlayer>({
+        name: '',
+        number: '',
+        role: null,
+        team: '',
+    });
+
+    console.log(playerForm);
+
     return (
         <View style={styles.container}>
             <View style={[styles.section, styles.playersList]}>
@@ -19,8 +44,24 @@ const PlayersScreen = () => {
 
             <View style={styles.section}>
                 <Text>Create a new player</Text>
-                <Text>name</Text>
-                <Text>number</Text>
+
+                <InputLight
+                    forwardedRef={refs.nameRef}
+                    label="Name"
+                    value={playerForm.name}
+                    onChangeText={(value) =>
+                        setPlayerForm({ ...playerForm, name: value })
+                    }
+                />
+
+                <InputLight
+                    forwardedRef={refs.numberRef}
+                    label="Number"
+                    value={playerForm.number}
+                    onChangeText={(value) =>
+                        setPlayerForm({ ...playerForm, number: value })
+                    }
+                />
                 <Text>role</Text>
                 <Text>team</Text>
             </View>
