@@ -81,6 +81,7 @@ const PlayersScreen = () => {
                         }
                     />
 
+                    <Text style={styles.label}>Roles</Text>
                     <ButtonGroup
                         buttons={roleOptions}
                         selectMultiple
@@ -133,5 +134,11 @@ const styles: Record<
         paddingVertical: 7,
         borderBottomColor: themeColors.ivory,
         borderBottomWidth: 1,
+    },
+    label: {
+        color: themeColors.ivory,
+        fontSize: 15,
+        paddingHorizontal: 10,
+        paddingBottom: 5,
     },
 });
