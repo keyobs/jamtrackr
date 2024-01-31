@@ -64,7 +64,8 @@ const PlayersScreen = () => {
                 </View>
 
                 <View style={styles.section}>
-                    <Text>Create a new player</Text>
+                    <Text style={styles.formTitle}>Create a new player</Text>
+
                     <InputLight
                         forwardedRef={refs.nameRef}
                         label="Name"
@@ -146,6 +147,12 @@ const styles: Record<
         paddingVertical: 7,
         borderBottomColor: themeColors.ivory,
         borderBottomWidth: 1,
+    },
+    formTitle: {
+        color: themeColors.ivory,
+        fontSize: 18,
+        paddingHorizontal: 10,
+        paddingVertical: 15,
     },
     label: {
         color: themeColors.ivory,
