@@ -10,9 +10,11 @@ import {
     ViewStyle,
 } from 'react-native';
 
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { themeColors } from '@theme/colors';
 
 import { ButtonGroup } from '@rneui/themed';
+import { Button } from '@rneui/base';
 
 import { InputLight } from '@components/inputs/InputLight';
 import SubmitButton from '@components/buttons/SubmitButton';
@@ -65,7 +67,6 @@ const PlayersScreen = () => {
 
                 <View style={styles.section}>
                     <Text style={styles.formTitle}>Create a new player</Text>
-
                     <InputLight
                         forwardedRef={refs.nameRef}
                         label="Name"
@@ -74,7 +75,6 @@ const PlayersScreen = () => {
                             setPlayerForm({ ...playerForm, name: value })
                         }
                     />
-
                     <InputLight
                         forwardedRef={refs.numberRef}
                         label="Number"
@@ -92,7 +92,7 @@ const PlayersScreen = () => {
                             selectedIndexes={playerForm.roles.map((role) =>
                                 roleOptions.indexOf(role),
                             )}
-                            onPress={(value) => handleSelectRoles(value)}
+                            onPress={handleSelectRoles}
                             buttonContainerStyle={{
                                 backgroundColor: themeColors.ivory,
                             }}
@@ -105,8 +105,30 @@ const PlayersScreen = () => {
                         />
                     </View>
 
-                    <View style={{ marginBottom: 20 }}>
-                        <Text style={styles.label}>Team</Text>
+                    <View style={{ marginBottom: 25 }}>
+                        <Text style={styles.label}>Teams</Text>
+                        <Button
+                            onPress={() => alert('add a team')}
+                            containerStyle={{
+                                marginHorizontal: 10,
+                                marginVertical: 5,
+                            }}
+                            buttonStyle={{
+                                width: 40,
+                                height: 40,
+                                backgroundColor: themeColors.ivory,
+                            }}
+                            iconContainerStyle={{
+                                backgroundColor: themeColors.ivory,
+                            }}
+                            icon={
+                                <MaterialCommunityIcons
+                                    name="plus"
+                                    size={20}
+                                    color={themeColors.darkBlue}
+                                />
+                            }
+                        />
                     </View>
 
                     <SubmitButton
