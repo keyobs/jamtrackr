@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { MutableRefObject, useRef, useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { useTranslation } from 'react-i18next';
 
@@ -9,6 +9,7 @@ import {
     StyleProp,
     TextStyle,
     ViewStyle,
+    TextInput,
 } from 'react-native';
 
 import { themeColors } from '@theme/colors';
@@ -66,7 +67,11 @@ const TeamsScreen = () => {
 
 export default TeamsScreen;
 
-const CreateTeamForm = ({ teamsFormRef, onCreate }) => {
+type TCreateTeamForm = {
+  teamsFormRef: MutableRefObject<TextInput | null>;
+  onCreate: (value: string) => void;
+};
+const CreateTeamForm = ({ teamsFormRef, onCreate }: TCreateTeamForm) => {
     const { t } = useTranslation();
 
     const [teamName, setTeamName] = useState<string>('');
