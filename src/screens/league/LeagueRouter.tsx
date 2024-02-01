@@ -1,13 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { useTranslation } from 'react-i18next';
 
 import { TAppStackParamsList } from '@navigation/Navigation';
 import { appRoutes } from '@navigation/appRoutes';
+
 import { themeColors } from '@theme/colors';
 
-import LeagueScreen from './LeagueScreen';
-import PlayersScreen from './players/PlayersScreen';
-import { useTranslation } from 'react-i18next';
-import TeamsScreen from './players/TeamsScreen';
+import LeagueScreen from '@screens/league/LeagueScreen';
+import PlayersScreen from '@screens/league/players/PlayersScreen';
+import TeamsScreen from '@screens/league/teams/TeamsScreen';
 
 const LeagueStack = createNativeStackNavigator<TAppStackParamsList>();
 
