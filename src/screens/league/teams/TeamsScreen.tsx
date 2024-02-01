@@ -42,7 +42,9 @@ const TeamsScreen = () => {
                 }}
             >
                 <View style={styles.teamsList}>
-                    {teams.length === 0 ? (
+                    {teams.length > 0 ? (
+                        <Text style={styles.sectionTitle}>Liste</Text>
+                    ) : (
                         <View style={{ alignItems: 'center', paddingTop: 50 }}>
                             <Icon
                                 type="material-community"
@@ -54,8 +56,6 @@ const TeamsScreen = () => {
                                 {t('teams_no_teams_disclaimer')}
                             </Text>
                         </View>
-                    ) : (
-                        <Text style={styles.sectionTitle}>Liste</Text>
                     )}
                 </View>
 
