@@ -1,4 +1,4 @@
-import { MutableRefObject, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { useTranslation } from 'react-i18next';
 
@@ -9,13 +9,12 @@ import {
     StyleProp,
     TextStyle,
     ViewStyle,
-    TextInput,
 } from 'react-native';
 
 import { themeColors } from '@theme/colors';
-import { Button, Icon } from '@rneui/themed';
+import { Icon } from '@rneui/themed';
 
-import { InputLight } from '@components/inputs/InputLight';
+import CreateTeamForm from '@screens/league/teams/CreateTeamForm';
 
 const TeamsScreen = () => {
     const teamsFormRef = useRef(null);
@@ -67,53 +66,6 @@ const TeamsScreen = () => {
 
 export default TeamsScreen;
 
-type TCreateTeamForm = {
-  teamsFormRef: MutableRefObject<TextInput | null>;
-  onCreate: (value: string) => void;
-};
-const CreateTeamForm = ({ teamsFormRef, onCreate }: TCreateTeamForm) => {
-    const { t } = useTranslation();
-
-    const [teamName, setTeamName] = useState<string>('');
-
-    const handleCreate = () => {
-        onCreate(teamName);
-        setTeamName('');
-    };
-
-    return (
-        <View style={styles.formContainer}>
-            <Text style={styles.sectionTitle}>{t('teams_form_title')}</Text>
-            <View style={styles.inputContainer}>
-                <InputLight
-                    label={t('teams_form_name_label')}
-                    placeholder={t('teams_form_name_placeholder')}
-                    forwardedRef={teamsFormRef}
-                    value={teamName}
-                    onChangeText={(value) => setTeamName(value)}
-                    containerStyle={{
-                        maxWidth: 330,
-                    }}
-                />
-                <Button
-                    title={t('teams_form_submit_button_label')}
-                    containerStyle={{
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        marginRight: 10,
-                    }}
-                    buttonStyle={{
-                        height: 45,
-                        borderRadius: 5,
-                        backgroundColor: themeColors.pink,
-                    }}
-                    onPress={() => handleCreate()}
-                ></Button>
-            </View>
-        </View>
-    );
-};
-
 const styles: Record<
   string,
   StyleProp<ViewStyle | TextStyle>
@@ -131,15 +83,6 @@ const styles: Record<
     teamsList: {
         maxHeight: '70%',
         paddingHorizontal: 10,
-
         marginBottom: 20,
-    },
-    formContainer: {
-        marginVertical: 10,
-    },
-    inputContainer: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        alignSelf: 'center',
     },
 });
