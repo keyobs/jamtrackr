@@ -15,16 +15,17 @@ import { themeColors } from '@theme/colors';
 import { Icon } from '@rneui/themed';
 
 import CreateTeamForm from '@screens/league/teams/CreateTeamForm';
+import TeamCard from '@screens/league/teams/TeamCard';
 
 const TeamsScreen = () => {
     const teamsFormRef = useRef(null);
     const { t } = useTranslation();
 
-    const [teams, setTeams] = useState<string[]>([]);
+    const [teamsList, setTeamsList] = useState<string[]>([]);
 
-    const onCreateTeam = (value) => setTeams([...teams, value]);
+    const onCreateTeam = (value) => setTeamsList([...teamsList, value]);
 
-    console.log('teams', teams);
+    console.log('teams', teamsList);
 
     return (
         <KeyboardAwareScrollView
@@ -41,8 +42,15 @@ const TeamsScreen = () => {
                 }}
             >
                 <View style={styles.teamsList}>
-                    {teams.length > 0 ? (
-                        <Text style={styles.sectionTitle}>Liste</Text>
+                    {teamsList.length > 0 ? (
+                        <View>
+                            <Text style={styles.sectionTitle}>Liste</Text>
+                            <View>
+                                {teamsList.map((teamName) => (
+                                    <TeamCard key={teamName} teamName={teamName} />
+                                ))}
+                            </View>
+                        </View>
                     ) : (
                         <View style={{ alignItems: 'center', paddingTop: 50 }}>
                             <Icon
