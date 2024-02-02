@@ -14,19 +14,25 @@ import { themeColors } from '@theme/colors';
 import { Button } from '@rneui/themed';
 
 import { InputLight } from '@components/inputs/InputLight';
+import { TTeam } from '@store/teamsStore';
 
 type TCreateTeamForm = {
   teamsFormRef: MutableRefObject<TextInput | null>;
-  onCreate: (value: string) => void;
+  onCreate: (value: TTeam) => void;
 };
 const CreateTeamForm = ({ teamsFormRef, onCreate }: TCreateTeamForm) => {
     const { t } = useTranslation();
 
-    const [teamName, setTeamName] = useState<string>('');
+    const initialTeam = {
+        name: '',
+        players: [],
+    };
+
+    const [team, setTeam] = useState<TTeam>(initialTeam);
 
     const handleCreate = () => {
-        onCreate(teamName);
-        setTeamName('');
+        onCreate(team);
+        setTeam(initialTeam);
     };
 
     return (
@@ -37,8 +43,8 @@ const CreateTeamForm = ({ teamsFormRef, onCreate }: TCreateTeamForm) => {
                     label={t('teams_form_name_label')}
                     placeholder={t('teams_form_name_placeholder')}
                     forwardedRef={teamsFormRef}
-                    value={teamName}
-                    onChangeText={(value) => setTeamName(value)}
+                    value={team.name}
+                    onChangeText={(value) => setTeam({ ...team, name: value })}
                     containerStyle={{
                         maxWidth: 330,
                     }}

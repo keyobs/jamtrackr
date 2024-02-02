@@ -12,9 +12,14 @@ import {
 
 import { themeColors } from '@theme/colors';
 import { CreatePlayerForm } from './CreatePlayerForm';
+import { useTeamStore } from '@store/teamsStore';
 
 const PlayersScreen = () => {
     const formRef = useRef(null);
+
+    const { teamsList } = useTeamStore((state) => state);
+
+    console.log('teams', teamsList);
 
     return (
         <KeyboardAwareScrollView

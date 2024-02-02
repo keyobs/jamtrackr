@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 import { useTranslation } from 'react-i18next';
 
@@ -16,16 +16,13 @@ import { Icon } from '@rneui/themed';
 
 import CreateTeamForm from '@screens/league/teams/CreateTeamForm';
 import TeamCard from '@screens/league/teams/TeamCard';
+import { useTeamsStore } from '@store/teamsStore';
 
 const TeamsScreen = () => {
     const teamsFormRef = useRef(null);
     const { t } = useTranslation();
 
-    const [teamsList, setTeamsList] = useState<string[]>([]);
-
-    const onCreateTeam = (value) => setTeamsList([...teamsList, value]);
-
-    console.log('teams', teamsList);
+    const { teamsList, updateTeamsList } = useTeamsStore((state) => state);
 
     return (
         <KeyboardAwareScrollView
@@ -46,8 +43,8 @@ const TeamsScreen = () => {
                         <View>
                             <Text style={styles.sectionTitle}>Liste</Text>
                             <View>
-                                {teamsList.map((teamName) => (
-                                    <TeamCard key={teamName} teamName={teamName} />
+                                {teamsList.map((team) => (
+                                    <TeamCard key={team.name} teamName={team.name} />
                                 ))}
                             </View>
                         </View>
@@ -66,7 +63,10 @@ const TeamsScreen = () => {
                     )}
                 </View>
 
-                <CreateTeamForm teamsFormRef={teamsFormRef} onCreate={onCreateTeam} />
+                <CreateTeamForm
+                    teamsFormRef={teamsFormRef}
+                    onCreate={updateTeamsList}
+                />
             </View>
         </KeyboardAwareScrollView>
     );
