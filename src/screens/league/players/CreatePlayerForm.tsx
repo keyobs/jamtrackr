@@ -10,6 +10,8 @@ import {
     ViewStyle,
 } from 'react-native';
 
+import { usePlayersStore } from '@store/playersStore';
+
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { themeColors } from '@theme/colors';
 
@@ -30,6 +32,7 @@ export type TRole = 'blocker' | 'jammer' | 'pivot';
 
 export const CreatePlayerForm = () => {
     const { t } = useTranslation();
+    const { updatePlayersList } = usePlayersStore((state) => state);
 
     const refs = {
         nameRef: useRef(null),
@@ -37,13 +40,14 @@ export const CreatePlayerForm = () => {
         roleRef: useRef(null),
         teamRef: useRef(null),
     };
-
-    const [playerForm, setPlayerForm] = useState<TPlayer>({
+    const initialPlayer = {
         name: '',
         number: '',
         roles: [],
         team: '',
-    });
+    };
+
+    const [playerForm, setPlayerForm] = useState<TPlayer>(initialPlayer);
 
     const roleOptions: TRole[] = ['blocker', 'jammer', 'pivot'];
     const handleSelectRoles = (value: number[]) => {
@@ -51,7 +55,10 @@ export const CreatePlayerForm = () => {
         setPlayerForm({ ...playerForm, roles: roles });
     };
 
-    console.log('form', playerForm);
+    const onCreatePlayer = () => {
+        updatePlayersList(playerForm);
+        setPlayerForm(initialPlayer);
+    };
 
     return (
         <View style={styles.form}>
@@ -131,7 +138,7 @@ export const CreatePlayerForm = () => {
 
             <SubmitButton
                 title={t('players_add_button_label')}
-                onPress={() => alert('player added')}
+                onPress={() => onCreatePlayer()}
             />
         </View>
     );
