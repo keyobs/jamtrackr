@@ -11,15 +11,15 @@ import {
 } from 'react-native';
 
 import { usePlayersStore } from '@store/playersStore';
+import { useTeamsStore } from '@store/teamsStore';
 
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { themeColors } from '@theme/colors';
 
-import { ButtonGroup } from '@rneui/themed';
-import { Button } from '@rneui/base';
+import { ButtonGroup } from '@rneui/base';
 
 import { InputLight } from '@components/inputs/InputLight';
 import SubmitButton from '@components/buttons/SubmitButton';
+import TeamsButtonsGroup from './TeamsButtonsGroup';
 
 type TPlayer = {
   name: string;
@@ -33,6 +33,7 @@ export type TRole = 'blocker' | 'jammer' | 'pivot';
 export const CreatePlayerForm = () => {
     const { t } = useTranslation();
     const { updatePlayersList } = usePlayersStore((state) => state);
+    const { teamsList } = useTeamsStore((state) => state);
 
     const refs = {
         nameRef: useRef(null),
@@ -112,28 +113,7 @@ export const CreatePlayerForm = () => {
 
             <View style={styles.teamsContainer}>
                 <Text style={styles.label}>{t('players_form_teams_label')}</Text>
-                <Button
-                    onPress={() => alert('add a team')}
-                    containerStyle={{
-                        marginHorizontal: 10,
-                        marginVertical: 5,
-                    }}
-                    buttonStyle={{
-                        width: 50,
-                        height: 50,
-                        backgroundColor: themeColors.ivory,
-                    }}
-                    iconContainerStyle={{
-                        backgroundColor: themeColors.ivory,
-                    }}
-                    icon={
-                        <MaterialCommunityIcons
-                            name="plus"
-                            size={20}
-                            color={themeColors.darkBlue}
-                        />
-                    }
-                />
+                <TeamsButtonsGroup teamsList={teamsList} />
             </View>
 
             <SubmitButton
