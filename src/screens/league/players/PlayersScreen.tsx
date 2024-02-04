@@ -2,7 +2,6 @@ import { useRef } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 import {
-    Text,
     StyleSheet,
     View,
     StyleProp,
@@ -13,13 +12,12 @@ import {
 import { themeColors } from '@theme/colors';
 import { CreatePlayerForm } from './CreatePlayerForm';
 import { usePlayersStore } from '@store/playersStore';
+import { ListItem } from '@rneui/base';
 
 const PlayersScreen = () => {
     const formRef = useRef(null);
 
     const { playersList } = usePlayersStore((state) => state);
-
-    console.log('players', playersList);
 
     return (
         <KeyboardAwareScrollView
@@ -27,11 +25,15 @@ const PlayersScreen = () => {
             style={styles.container}
             getTextInoutRefs={() => formRef}
         >
-            <View style={styles.container}>
+            <View style={styles.content}>
                 <View style={[styles.section, styles.playersList]}>
-                    <Text style={styles.listTitle}>Liste</Text>
-                    <Text>number name team</Text>
-                    <Text></Text>
+                    {[...playersList].map((player) => (
+                        <ListItem key={player.name}>
+                            <ListItem.Content>
+                                <ListItem.Title>{player.name}</ListItem.Title>
+                            </ListItem.Content>
+                        </ListItem>
+                    ))}
                 </View>
                 <View ref={formRef}>
                     <CreatePlayerForm />
@@ -52,21 +54,16 @@ const styles: Record<
         backgroundColor: themeColors.darkBlue,
         paddingTop: 10,
     },
+    content: {
+        flexGrow: 1,
+        justifyContent: 'space-between',
+        paddingBottom: 50,
+    },
     section: {
         minHeight: 200,
     },
     playersList: {
-        borderTopWidth: 1,
         borderBottomWidth: 1,
-        borderTopColor: themeColors.ivory,
         borderBottomColor: themeColors.ivory,
-    },
-    listTitle: {
-        color: themeColors.ivory,
-        fontSize: 20,
-        paddingHorizontal: 20,
-        paddingVertical: 7,
-        borderBottomColor: themeColors.ivory,
-        borderBottomWidth: 1,
     },
 });
