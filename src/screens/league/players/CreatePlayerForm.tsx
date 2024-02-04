@@ -67,8 +67,6 @@ export const CreatePlayerForm = () => {
 
     return (
         <View style={styles.form}>
-            <Text style={styles.formTitle}>{t('players_form_title')}</Text>
-
             <View style={styles.infosContainer}>
                 <InputLight
                     forwardedRef={refs.numberRef}
