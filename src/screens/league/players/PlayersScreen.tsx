@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scrollview';
 
 import {
@@ -18,6 +18,7 @@ import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
 
 import { CreatePlayerForm } from './CreatePlayerForm';
 import NoListItem from '@components/lists/NoListItem';
+import { PlayerItem } from './PlayersList';
 
 const PlayersScreen = () => {
     const formRef = useRef(null);
@@ -26,6 +27,10 @@ const PlayersScreen = () => {
     const { playersList } = usePlayersStore((state) => state);
 
     const [openCreatePlayerForm, setOpenCreatePlayerForm] = useState(true);
+
+    const playersListExtract = useMemo(() => {
+        return playersList.length < 5 ? playersList : playersList.slice(0, 5);
+    }, [playersList]);
 
     return (
         <KeyboardAwareScrollView
@@ -40,12 +45,12 @@ const PlayersScreen = () => {
                     onPressAction={() => alert('to the players list')}
                 />
 
-                {playersList.length > 0 ? (
-                    <View
-                        style={{
-                            minHeight: 200,
-                        }}
-                    ></View>
+                {playersListExtract.length > 0 ? (
+                    <View style={styles.playersList}>
+                        {playersList.map((player) => (
+                            <PlayerItem key={player.name} player={player} />
+                        ))}
+                    </View>
                 ) : (
                     <NoListItem
                         disclaimerText={t('players_no_players_disclaimer')}
@@ -55,10 +60,14 @@ const PlayersScreen = () => {
 
                 <View>
                     <ListItem.Accordion
+                        isExpanded={openCreatePlayerForm}
+                        onPress={() => setOpenCreatePlayerForm(!openCreatePlayerForm)}
                         containerStyle={{
                             backgroundColor: themeColors.pink,
-                            borderBottomColor: themeColors.ivory,
+                            borderTopWidth: 1,
                             borderBottomWidth: 1,
+                            borderBottomColor: themeColors.ivory,
+                            borderTopColor: themeColors.ivory,
                         }}
                         icon={{
                             type: 'feather',
@@ -74,8 +83,6 @@ const PlayersScreen = () => {
                                 </ListItem.Content>
                             </>
                         }
-                        isExpanded={openCreatePlayerForm}
-                        onPress={() => setOpenCreatePlayerForm(!openCreatePlayerForm)}
                     >
                         <View ref={formRef} style={{ paddingTop: 20 }}>
                             <CreatePlayerForm />
@@ -116,7 +123,6 @@ const styles: Record<
         minHeight: 200,
     },
     playersList: {
-        borderBottomWidth: 1,
-        borderBottomColor: themeColors.ivory,
+        minHeight: 195,
     },
 });
