@@ -11,10 +11,9 @@ import {
 } from 'react-native';
 
 import { usePlayersStore } from '@store/playersStore';
-import { useTeamsStore } from '@store/teamsStore';
+import { TTeam, useTeamsStore } from '@store/teamsStore';
 
 import { themeColors } from '@theme/colors';
-
 import { ButtonGroup } from '@rneui/base';
 
 import { InputLight } from '@components/inputs/InputLight';
@@ -59,6 +58,11 @@ export const CreatePlayerForm = () => {
     const onCreatePlayer = () => {
         updatePlayersList(playerForm);
         setPlayerForm(initialPlayer);
+    };
+
+    const onSelectTeam = (team: TTeam) => {
+        const isSelected = playerForm.team === team.name;
+        setPlayerForm({ ...playerForm, team: isSelected ? '' : team.name });
     };
 
     return (
@@ -106,14 +110,14 @@ export const CreatePlayerForm = () => {
                         color: '#00131a',
                     }}
                     selectedButtonStyle={{
-                        backgroundColor: '#20B2AA',
+                        backgroundColor: themeColors.lightSeaGreen,
                     }}
                 />
             </View>
 
             <View style={styles.teamsContainer}>
                 <Text style={styles.label}>{t('players_form_teams_label')}</Text>
-                <TeamsButtonsGroup teamsList={teamsList} />
+                <TeamsButtonsGroup teamsList={teamsList} onSelectTeam={onSelectTeam} />
             </View>
 
             <SubmitButton
