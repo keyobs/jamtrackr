@@ -2,6 +2,9 @@
 /* eslint-disable quotes*/
 
 export default {
+    //GENERIC
+    generic_no_item_disclaimer: "oh non, cette liste est vide.",
+
     // GAMES SCREEN
     games_title: "Matchs",
 
@@ -15,6 +18,8 @@ export default {
 
     //PLAYERS
     players_title: "Players",
+    players_to_players_list_button_label: "Liste",
+    players_no_players_disclaimer: "ajoutez des joueureuses...",
     players_form_title: "Ajouter un.e joueureuse",
     players_form_name_label: "Nom",
     players_form_number_label: "Numéro",
@@ -24,7 +29,7 @@ export default {
 
     // TEAMS
     teams_title: "Equipes",
-    teams_no_teams_disclaimer: "en attendant vos équipes...",
+    teams_no_teams_disclaimer: "ajoutez des équipes...",
     teams_form_title: "Nouvelle équipe",
     teams_form_name_label: "Nom",
     teams_form_name_placeholder: "entrer un nom d'équipe",

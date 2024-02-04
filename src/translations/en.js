@@ -2,6 +2,9 @@
 /* eslint-disable quotes*/
 
 export default {
+    //GENERIC
+    generic_no_item_disclaimer: "oh no, this list is empty.",
+
     // GAMES SCREEN
     games_title: "Games",
 
@@ -15,6 +18,8 @@ export default {
 
     //PLAYERS
     players_title: "Players",
+    players_to_players_list_button_label: "List",
+    players_no_players_disclaimer: "start adding players...",
     players_form_title: "Create a player",
     players_form_name_label: "Name",
     players_form_number_label: "Number",
@@ -24,7 +29,7 @@ export default {
 
     // TEAMS
     teams_title: "Teams",
-    teams_no_teams_disclaimer: "while waiting for your teams...",
+    teams_no_teams_disclaimer: "start adding teams...",
     teams_form_title: "New team",
     teams_form_name_label: "Name",
     teams_form_name_placeholder: "enter a team name",
