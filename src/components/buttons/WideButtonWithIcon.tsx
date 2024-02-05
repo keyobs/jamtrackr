@@ -42,7 +42,7 @@ export const WideButtonWithIcon = (props: TWideButtonWithIcon) => {
         <TouchableHighlight
             style={styles.container}
             activeOpacity={0.8}
-            underlayColor={themeColors.teal}
+            underlayColor={'#d1d1d1'}
             onPress={() => onPressAction()}
         >
             <View style={styles.buttonContainer}>
@@ -69,17 +69,17 @@ const styles: Record<
         marginVertical: 10,
         paddingHorizontal: 20,
         justifyContent: 'center',
-        backgroundColor: themeColors.lightSeaGreen,
+        backgroundColor: themeColors.whiteSmoke,
     },
     buttonContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
     text: {
-        color: themeColors.hardDarkBlue,
+        color: themeColors.darkBlue,
         fontSize: 15,
     },
     icon: {
-        color: themeColors.darkBlue,
+        color: themeColors.ivory,
     },
 });
