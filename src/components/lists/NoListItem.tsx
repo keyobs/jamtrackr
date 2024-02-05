@@ -15,7 +15,7 @@ const NoListItem = (props: TNoListItem) => {
         container: [
             {
                 alignItems: 'center',
-                paddingVertical: 50,
+                paddingVertical: 10,
             },
             props.containerStyle,
         ],
