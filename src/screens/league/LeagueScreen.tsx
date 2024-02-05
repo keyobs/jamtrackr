@@ -13,11 +13,18 @@ import { themeColors } from '@theme/colors';
 import { TAppStackParamsList } from '@navigation/Navigation';
 import { appRoutes } from '@navigation/appRoutes';
 
+import { usePlayersStore } from '@store/playersStore';
+import { useTeamsStore } from '@store/teamsStore';
+
 import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
+import NoListItem from '@components/lists/NoListItem';
 
 const LeagueScreen = () => {
     const { t } = useTranslation();
     const navigation = useNavigation<TAppStackParamsList>();
+
+    const { playersList } = usePlayersStore((state) => state);
+    const { teamsList } = useTeamsStore((state) => state);
 
     return (
         <View style={styles.container}>
@@ -25,7 +32,12 @@ const LeagueScreen = () => {
                 <View style={styles.sectionTitle}>
                     <Text style={styles.sectionTitleText}>{t('league_teams_title')}</Text>
                 </View>
-
+                {teamsList.length > 0 ? null : (
+                    <NoListItem
+                        disclaimerText={t('teams_no_teams_disclaimer')}
+                        iconSize={60}
+                    />
+                )}
                 <WideButtonWithIcon
                     label={t('league_teams_add_button_label')}
                     preset="chevron-next"
@@ -39,6 +51,12 @@ const LeagueScreen = () => {
                         {t('league_players_title')}
                     </Text>
                 </View>
+                {playersList.length > 0 ? null : (
+                    <NoListItem
+                        disclaimerText={t('players_no_players_disclaimer')}
+                        iconSize={60}
+                    />
+                )}
 
                 <WideButtonWithIcon
                     label={t('league_players_manage_button_label')}
