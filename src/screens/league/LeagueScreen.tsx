@@ -78,15 +78,20 @@ const styles: Record<
         flex: 1,
         backgroundColor: themeColors.darkBlue,
     },
-
     section: {
         maxHeight: '50%',
         justifyContent: 'space-between',
+        paddingBottom: 30,
     },
     sectionTitle: {
         height: 50,
         justifyContent: 'center',
         paddingHorizontal: 20,
+        borderTopWidth: 1,
+        borderTopColor: themeColors.ivory,
+        borderBottomWidth: 1,
+        borderBottomColor: themeColors.ivory,
+        marginBottom: 20,
     },
 
     sectionTitleText: {
