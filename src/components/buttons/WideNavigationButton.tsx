@@ -8,6 +8,7 @@ import {
     TouchableHighlight,
     View,
 } from 'react-native';
+
 import { themeColors } from '@theme/colors';
 
 type TWideButtonWithIcon = {
@@ -46,10 +47,9 @@ export const WideNavigationButton = (props: TWideButtonWithIcon) => {
             {
                 width: '100%',
                 height: 50,
-                marginVertical: 10,
                 paddingHorizontal: 20,
                 justifyContent: 'center',
-                backgroundColor: 'rgba(43, 131, 166, 0.4)',
+                backgroundColor: themeColors.hardDarkBlue,
             },
             props.containerStyle,
         ],

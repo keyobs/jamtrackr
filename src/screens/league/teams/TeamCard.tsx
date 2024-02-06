@@ -18,7 +18,7 @@ const TeamCard = (props: TTeamCard) => {
                 height: 55,
                 paddingLeft: 20,
                 paddingRight: 10,
-                backgroundColor: '#013550',
+                backgroundColor: themeColors.hardDarkBlue,
                 justifyContent: 'space-between',
                 flexDirection: 'row',
                 alignItems: 'center',

@@ -7,7 +7,7 @@ export const themeColors: Record<string, `#${string}`> = {
     whiteSmoke: '#F5F5F5',
 
     //blues
-    hardDarkBlue: '#00131a',
+    hardDarkBlue: '#013550',
     darkBlue: '#024059',
     steelBlue: '#0378A6',
     lightBlue: '#9AC9DB',
