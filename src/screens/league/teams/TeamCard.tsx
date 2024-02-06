@@ -1,16 +1,18 @@
 import { Text, StyleProp, TextStyle, ViewStyle, View } from 'react-native';
-
 import { themeColors } from '@theme/colors';
 import { Icon, Button } from '@rneui/base';
 
 type TTeamCard = {
   teamName: string;
+  onEdit?: () => void;
+  onDelete?: () => void;
   containerStyle?: StyleProp<ViewStyle>;
   titleStyle?: StyleProp<TextStyle>;
   iconColor?: string;
 };
+
 const TeamCard = (props: TTeamCard) => {
-    const { teamName } = props;
+    const { teamName, onEdit, onDelete } = props;
 
     const styles: Record<string, StyleProp<ViewStyle | TextStyle>> = {
         containerStyle: [
@@ -44,6 +46,7 @@ const TeamCard = (props: TTeamCard) => {
             <View style={{ flexDirection: 'row', columnGap: 10 }}>
                 <Button
                     type="clear"
+                    onPress={onDelete}
                     icon={
                         <Icon
                             type="ant-design"
@@ -55,6 +58,7 @@ const TeamCard = (props: TTeamCard) => {
                 />
                 <Button
                     type="clear"
+                    onPress={onEdit}
                     icon={
                         <Icon
                             type="feather"

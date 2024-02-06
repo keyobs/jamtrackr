@@ -12,10 +12,15 @@ export type TTeam = {
 export interface TTeamsState {
   teamsList: TTeam[];
   updateTeamsList: (team: TTeam) => void;
+  deleteTeam: (teamId: string) => void;
 }
 
 export const useTeamsStore = create<TTeamsState>((set) => ({
     teamsList: [],
     updateTeamsList: (team: TTeam) =>
         set((state) => ({ teamsList: [...state.teamsList, team] })),
+    deleteTeam: (teamId: string) =>
+        set((state) => ({
+            teamsList: state.teamsList.filter((team) => team.id !== teamId),
+        })),
 }));
