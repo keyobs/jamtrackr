@@ -1,24 +1,25 @@
-import React, { ReactElement } from 'react';
+import { ReactElement, FunctionComponent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { StyleSheet, Text, View } from 'react-native';
 
-import { BottomSheet, Button, Icon } from '@rneui/themed';
+import { BottomSheet, BottomSheetProps, Button, Icon } from '@rneui/themed';
 import { themeColors } from '@theme/colors';
 
-type BottomSheetComponentProps = {
+type TBottomSheetComponent = {
+  isVisible: boolean;
   deleteMessage: string | ReactElement;
   onClose: () => void;
-  isVisible: boolean;
+  onDelete: () => void;
 };
 
-const DeleteBottomSheet: React.FunctionComponent<BottomSheetComponentProps> = (
-    props,
-) => {
+const DeleteBottomSheet: FunctionComponent<
+  BottomSheetProps & TBottomSheetComponent
+> = (props) => {
     const { t } = useTranslation();
-    const { deleteMessage, isVisible, onClose } = props;
+    const { isVisible, deleteMessage, onClose, onDelete } = props;
 
     return (
-        <BottomSheet modalProps={{}} isVisible={isVisible}>
+        <BottomSheet modalProps={{}} isVisible={isVisible} {...props}>
             <View style={styles.container}>
                 <View style={styles.buttonContainer}>
                     <Button type="clear" onPress={onClose}>
@@ -36,7 +37,7 @@ const DeleteBottomSheet: React.FunctionComponent<BottomSheetComponentProps> = (
                 <Button
                     title={t('generic_delete_modal_message')}
                     containerStyle={{ marginHorizontal: 50 }}
-                    onPress={() => alert('delete')}
+                    onPress={onDelete}
                     color={'#f44200'}
                 />
             </View>
