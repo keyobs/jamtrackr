@@ -1,41 +1,72 @@
-import {
-    Text,
-    StyleSheet,
-    StyleProp,
-    TextStyle,
-    ViewStyle,
-} from 'react-native';
+import { Text, StyleProp, TextStyle, ViewStyle, View } from 'react-native';
 
 import { themeColors } from '@theme/colors';
-import { Card } from '@rneui/base';
+import { Icon, Button } from '@rneui/base';
 
-type TTeamCard = { teamName: string };
-const TeamCard = ({ teamName }: TTeamCard) => {
-    return (
-        <Card
-            containerStyle={{
-                borderRadius: 15,
-                height: 60,
-                paddingHorizontal: 20,
-                backgroundColor: themeColors.ivory,
-                alignContent: 'center',
+type TTeamCard = {
+  teamName: string;
+  containerStyle?: StyleProp<ViewStyle>;
+  titleStyle?: StyleProp<TextStyle>;
+  iconColor?: string;
+};
+const TeamCard = (props: TTeamCard) => {
+    const { teamName } = props;
+
+    const styles: Record<string, StyleProp<ViewStyle | TextStyle>> = {
+        containerStyle: [
+            {
+                height: 55,
+                paddingLeft: 20,
+                paddingRight: 10,
+                backgroundColor: '#013550',
+                justifyContent: 'space-between',
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginBottom: 1,
+            },
+            props.containerStyle,
+        ],
+        teamTitle: [
+            {
+                color: themeColors.ivory,
+                fontSize: 15,
                 justifyContent: 'center',
-            }}
-        >
+                alignContent: 'center',
+            },
+            props.titleStyle,
+        ],
+    };
+
+    return (
+        <View style={styles.containerStyle}>
             <Text style={styles.teamTitle}>{teamName}</Text>
-        </Card>
+
+            <View style={{ flexDirection: 'row', columnGap: 10 }}>
+                <Button
+                    type="clear"
+                    icon={
+                        <Icon
+                            type="ant-design"
+                            name="delete"
+                            color={props.iconColor || themeColors.ivory}
+                            size={20}
+                        />
+                    }
+                />
+                <Button
+                    type="clear"
+                    icon={
+                        <Icon
+                            type="feather"
+                            name="edit-2"
+                            color={props.iconColor || themeColors.ivory}
+                            size={25}
+                        />
+                    }
+                />
+            </View>
+        </View>
     );
 };
 
 export default TeamCard;
-
-const styles: Record<
-  string,
-  StyleProp<ViewStyle | TextStyle>
-> = StyleSheet.create({
-    teamTitle: {
-        color: themeColors.darkBlue,
-        fontSize: 15,
-        fontWeight: 'bold',
-    },
-});

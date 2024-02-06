@@ -18,6 +18,7 @@ import { useTeamsStore } from '@store/teamsStore';
 
 import { WideNavigationButton } from '@components/buttons/WideNavigationButton';
 import NoListItem from '@components/lists/NoListItem';
+import TeamCard from './teams/TeamCard';
 
 const LeagueScreen = () => {
     const { t } = useTranslation();
@@ -32,7 +33,11 @@ const LeagueScreen = () => {
                 <View style={styles.sectionTitle}>
                     <Text style={styles.sectionTitleText}>{t('league_teams_title')}</Text>
                 </View>
-                {teamsList.length > 0 ? null : (
+                {teamsList.length > 0 ? (
+                    teamsList.map((team) => (
+                        <TeamCard key={team.name} teamName={team.name} />
+                    ))
+                ) : (
                     <NoListItem
                         disclaimerText={t('teams_no_teams_disclaimer')}
                         iconSize={60}
