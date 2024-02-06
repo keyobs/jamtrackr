@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { ListItem } from '@rneui/base';
 
 import { usePlayersStore } from '@store/playersStore';
-import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
+import { WideNavigationButton } from '@components/buttons/WideNavigationButton';
 
 import { CreatePlayerForm } from './CreatePlayerForm';
 import NoListItem from '@components/lists/NoListItem';
@@ -39,9 +39,9 @@ const PlayersScreen = () => {
             getTextInoutRefs={() => formRef}
         >
             <View style={styles.content}>
-                <WideButtonWithIcon
+                <WideNavigationButton
                     label={t('players_to_players_list_button_label')}
-                    preset="chevron-next"
+                    direction="next"
                     onPressAction={() => alert('to the players list')}
                 />
 

@@ -16,7 +16,7 @@ import { appRoutes } from '@navigation/appRoutes';
 import { usePlayersStore } from '@store/playersStore';
 import { useTeamsStore } from '@store/teamsStore';
 
-import { WideButtonWithIcon } from '@components/buttons/WideButtonWithIcon';
+import { WideNavigationButton } from '@components/buttons/WideNavigationButton';
 import NoListItem from '@components/lists/NoListItem';
 
 const LeagueScreen = () => {
@@ -38,9 +38,9 @@ const LeagueScreen = () => {
                         iconSize={60}
                     />
                 )}
-                <WideButtonWithIcon
+                <WideNavigationButton
                     label={t('league_teams_add_button_label')}
-                    preset="chevron-next"
+                    direction="next"
                     onPressAction={() => navigation.navigate(appRoutes.TEAMS)}
                 />
             </View>
@@ -58,9 +58,9 @@ const LeagueScreen = () => {
                     />
                 )}
 
-                <WideButtonWithIcon
+                <WideNavigationButton
                     label={t('league_players_manage_button_label')}
-                    preset="chevron-next"
+                    direction="next"
                     onPressAction={() => navigation.navigate(appRoutes.PLAYERS)}
                 />
             </View>
