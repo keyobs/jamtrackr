@@ -4,6 +4,7 @@
 export default {
     //GENERIC
     generic_no_item_disclaimer: "oh non, cette liste est vide.",
+    generic_delete_modal_message: `Supprimer`,
 
     // GAMES SCREEN
     games_title: "Matchs",
@@ -34,6 +35,7 @@ export default {
     teams_form_name_label: "Nom",
     teams_form_name_placeholder: "entrer un nom d'équipe",
     teams_form_submit_button_label: "Créer",
+    teams_delete_modal_message: `Supprimer l'équipe {{newline}} {{teamName}} ?`,
 
     // SEARCH SCREEN
     search_title: "Recherche",
